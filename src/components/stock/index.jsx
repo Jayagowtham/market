@@ -12,7 +12,7 @@ export default function Stock() {
     try {
       const fetchData = async () => {
         const data = JSON.stringify({
-          mode: "FULL",
+           mode: "FULL",
           exchangeTokens: {
             NSE: [stockId],
           },
@@ -85,46 +85,41 @@ export default function Stock() {
         <h2>Enter the stock Id to fetch the data</h2>
       ) : (
         <div>
-          <div className="city-name">
+          <div className="script">
             <h2>
-              {stockData?.tradingSymbol},<span>({stockData?.symbolToken})</span>
+              <span>{stockData?.exchange}</span> {stockData?.tradingSymbol} <span>({stockData?.symbolToken})</span>
             </h2>
           </div>
           <div className="date">
-            <span>{getCurrentDate()}</span>
+            <span>{stockData.exchTradeTime}</span>
+          </div>
+          
+          <div className="current-price">{stockData?.ltp}</div>
+          <p className="description">
+            Current Price
+          </p>
+          <div className="stock-info">
+            <div className="column">
+              <div>
+                <p className="price">{stockData?.high}%</p>
+                <p>HighestPrice</p>
+              </div>
+            </div>
           </div>
           <div className="stock-info">
             <div className="column">
               <div>
-                <p>current price</p>
-                <p className="wind">{stockData?.ltp}</p>
+                <p className="price">{stockData?.low}%</p>
+                <p>LowestPrice</p>
               </div>
             </div>
-            <div className="column">
+             <div className="column">
               <div>
-                <p>open</p>
-                <p className="humidity">{stockData?.open}%</p>
+                <p className="price">{stockData?.avgPrice}%</p>
+                <p>AveragePrice</p>
               </div>
+            </div> 
             </div>
-            <div className="column">
-              <div>
-                <p>high</p>
-                <p className="humidity">{stockData?.high}%</p>
-              </div>
-            </div>
-            <div className="column">
-              <div>
-                <p>low</p>
-                <p className="humidity">{stockData?.low}%</p>
-              </div>
-            </div>
-            <div className="column">
-              <div>
-                <p>avgPrice</p>
-                <p className="humidity">{stockData?.avgPrice}%</p>
-              </div>
-            </div>
-          </div>
         </div>
       )}
     </div>

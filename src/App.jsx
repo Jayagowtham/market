@@ -1,4 +1,3 @@
-
 import Stock from './components/stock';
 import './App.css';
 
@@ -9,5 +8,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
