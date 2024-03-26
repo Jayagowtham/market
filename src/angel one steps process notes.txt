@@ -1,0 +1,42 @@
+Angel one demat account number : 1203320239035435
+
+45
+
+
+
+
+// do this simialr to stock in js .
+
+var axios = require('axios');
+var data = JSON.stringify({
+    "mode": "FULL",
+    "exchangeTokens": {
+        "NSE": ["3045"]                            // this one have to be given dynamically
+    }
+});
+
+var config = {
+  method: 'post',
+  url: 'https://apiconnect.angelbroking.com/
+  rest/secure/angelbroking/market/v1/quote/',
+  headers: { 
+    'X-PrivateKey': 'API_KEY',                             // api key should be changed 
+    'Accept': 'application/json, application/json', 
+    'X-SourceID': 'WEB, WEB', 
+    'X-ClientLocalIP': 'CLIENT_LOCAL_IP', 
+    'X-ClientPublicIP': 'CLIENT_PUBLIC_IP', 
+    'X-MACAddress': 'MAC_ADDRESS', 
+    'X-UserType': 'USER', 
+    'Authorization': 'Bearer AUTHORIZATION_TOKEN',   //  ewty token should be pasted here
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
